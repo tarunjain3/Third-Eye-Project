@@ -33,7 +33,7 @@ class _ExamDetailsState extends State<ExamDetails> {
 
       setState(() {
         _image = _image;
-        print("_image: ${_image}");
+        print("_image: $_image");
       });
       Navigator.push(
           context,
