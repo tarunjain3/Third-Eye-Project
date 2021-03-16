@@ -107,8 +107,6 @@ class _SideDrawerState extends State<SideDrawer> {
                   title: Text("Exams"),
                   onTap: () {
                     Navigator.pop(context);
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => ExamsList()));
                   },
                 ),
                 ListTile(
@@ -145,6 +143,7 @@ class _SideDrawerState extends State<SideDrawer> {
                   ),
                   title: Text("Time Table"),
                   onTap: () async {
+                     Navigator.pop(context);
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) => TimeTable()));
                   },

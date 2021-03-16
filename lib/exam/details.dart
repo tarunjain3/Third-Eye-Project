@@ -1,8 +1,7 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:thirdeye/exam/webView.dart';
+
 
 class ExamDetails extends StatefulWidget {
   final File imageUrl;
@@ -25,6 +24,33 @@ class _ExamDetailsState extends State<ExamDetails> {
   File _image;
   final scaffoldKey = GlobalKey<ScaffoldState>();
   var profileImage;
+  bool showErrorMessage = false;
+  Future<void> _showMyDialog(BuildContext context) async {
+  return showDialog<void>(
+    context: context,
+    barrierDismissible: false, // user must tap button!
+    builder: (BuildContext context) {
+      return AlertDialog(
+        title: Text('Verification Failed'),
+        content: SingleChildScrollView(
+          child: ListBody(
+            children: <Widget>[
+              Text('Please retry with correct details'),
+            ],
+          ),
+        ),
+        actions: <Widget>[
+          TextButton(
+            child: Text('Ok'),
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+          ),
+        ],
+      );
+    },
+  );
+}
   @override
   Widget build(BuildContext context) {
     double cHeight = MediaQuery.of(context).size.height;
@@ -47,7 +73,9 @@ class _ExamDetailsState extends State<ExamDetails> {
     return Scaffold(
       key: _scaffoldKey,
       appBar: AppBar(
-        title: Text("Details"),
+        title: GestureDetector(child: Text("Details") ,onTap: (){setState(() {
+          showErrorMessage = true;
+        });},),
       ),
       body: Container(
           child: Column(
@@ -237,16 +265,12 @@ class _ExamDetailsState extends State<ExamDetails> {
                           color: Colors.blue,
                           child: MaterialButton(
                             onPressed: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => ExamWebView()));
-                              // final snackBar = SnackBar(
-                              //   content: Text(
-                              //       'You will be redirected to Exam Portal soon'),
-                              // );
-                              // ScaffoldMessenger.of(context)
-                              //     .showSnackBar(snackBar);
+                              // showErrorMessage
+                              _showMyDialog(context);
+                              // :Navigator.push(
+                              //     context,
+                              //     MaterialPageRoute(
+                              //         builder: (context) => ExamWebView()));
                             },
                             child: Text(
                               "Start Exam",

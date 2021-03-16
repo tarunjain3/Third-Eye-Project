@@ -45,13 +45,13 @@ class _ExamWebViewState extends State<ExamWebView> {
 
   @override
   void initState() {
-      Future.delayed(const Duration(milliseconds: 5000), () {
+      Future.delayed(const Duration(milliseconds: 8000), () {
         getImage(context);
-         Future.delayed(const Duration(milliseconds: 10000), () {
+         Future.delayed(const Duration(milliseconds: 5000), () {
         getImage(context);
-        Future.delayed(const Duration(milliseconds: 15000), () {
+        Future.delayed(const Duration(milliseconds: 5000), () {
         getImage(context);
-        Future.delayed(const Duration(milliseconds: 15000), () {
+        Future.delayed(const Duration(milliseconds: 5000), () {
         getImage(context);
         
       });
@@ -75,7 +75,7 @@ class _ExamWebViewState extends State<ExamWebView> {
             Expanded(
               child: WebView(
                 initialUrl:
-                    "https://docs.google.com/forms/d/e/1FAIpQLScWbvyJCB4HvynPMqK1yxfznZskOOQfS5eWqKo4cvksxTdx1g/viewform",
+                    "https://docs.google.com/forms/d/e/1FAIpQLSdZPT0G3bhosB8q0NcMqXCMUPDFGR9D6RcUWmnB-qTwwb2f4g/viewform",
                 gestureRecognizers: Set()
                   ..add(
                     Factory<VerticalDragGestureRecognizer>(
