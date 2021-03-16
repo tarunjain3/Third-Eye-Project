@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:thirdeye/exam/webView.dart';
 
 class ExamDetails extends StatefulWidget {
   final File imageUrl;
@@ -236,12 +237,16 @@ class _ExamDetailsState extends State<ExamDetails> {
                           color: Colors.blue,
                           child: MaterialButton(
                             onPressed: () {
-                              final snackBar = SnackBar(
-                                content: Text(
-                                    'You will be redirected to Exam Portal soon'),
-                              );
-                              ScaffoldMessenger.of(context)
-                                  .showSnackBar(snackBar);
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => ExamWebView()));
+                              // final snackBar = SnackBar(
+                              //   content: Text(
+                              //       'You will be redirected to Exam Portal soon'),
+                              // );
+                              // ScaffoldMessenger.of(context)
+                              //     .showSnackBar(snackBar);
                             },
                             child: Text(
                               "Start Exam",
