@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:thirdeye/exam/details.dart';
+import 'package:thirdeye/sideDrawer.dart';
 
 class ExamsList extends StatefulWidget {
   final File imageUrl;
@@ -24,7 +25,9 @@ class _ExamsListState extends State<ExamsList> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+       drawer: SideDrawer(),
       appBar: AppBar(
+       
         title: Center(child: Text("Exams")),
       ),
       body: Padding(

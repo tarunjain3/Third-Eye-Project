@@ -35,19 +35,30 @@ class _ExamWebViewState extends State<ExamWebView> {
     setState(() {
       if (pickedFile != null) {
         _image = File(pickedFile.path);
+        print("_image : $_image");
       } else {
         print('No image selected.');
       }
     });
+    return _image;
   }
 
   @override
   void initState() {
-    for (int i = 0; i < 4; i++) {
       Future.delayed(const Duration(milliseconds: 5000), () {
         getImage(context);
+         Future.delayed(const Duration(milliseconds: 10000), () {
+        getImage(context);
+        Future.delayed(const Duration(milliseconds: 15000), () {
+        getImage(context);
+        Future.delayed(const Duration(milliseconds: 15000), () {
+        getImage(context);
+        
       });
-    }
+        
+      });
+      });
+      });
     super.initState();
   }
 
@@ -64,7 +75,7 @@ class _ExamWebViewState extends State<ExamWebView> {
             Expanded(
               child: WebView(
                 initialUrl:
-                    "https://therealtechwiz.github.io/project/facerecognition/",
+                    "https://docs.google.com/forms/d/e/1FAIpQLScWbvyJCB4HvynPMqK1yxfznZskOOQfS5eWqKo4cvksxTdx1g/viewform",
                 gestureRecognizers: Set()
                   ..add(
                     Factory<VerticalDragGestureRecognizer>(

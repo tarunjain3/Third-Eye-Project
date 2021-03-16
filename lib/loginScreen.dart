@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:thirdeye/homePage.dart';
-
+import 'package:thirdeye/exam/exams.dart';
 class LoginScreen extends StatefulWidget {
   @override
   _LoginScreenState createState() => _LoginScreenState();
@@ -112,7 +111,7 @@ class _LoginScreenState extends State<LoginScreen> {
         elevation: 5.0,
         onPressed: () {
           print('Login Button Pressed');
-          Navigator.push(context, MaterialPageRoute(builder: (context) => MyHomePage()));
+          Navigator.push(context, MaterialPageRoute(builder: (context) => ExamsList()));
         },
         padding: EdgeInsets.all(15.0),
         shape: RoundedRectangleBorder(

@@ -101,12 +101,14 @@ class _SideDrawerState extends State<SideDrawer> {
                 ListTile(
                   contentPadding: EdgeInsets.only(left: cWidth * 0.1),
                   leading: Icon(
-                    Icons.home,
+                    Icons.group,
                     color: Color(0xFF398AE5),
                   ),
-                  title: Text("Home"),
+                  title: Text("Exams"),
                   onTap: () {
                     Navigator.pop(context);
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => ExamsList()));
                   },
                 ),
                 ListTile(
@@ -129,21 +131,10 @@ class _SideDrawerState extends State<SideDrawer> {
                   title: Text("Class Mate"),
                   onTap: () {
                     Navigator.pop(context);
-                     Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => StudentsList()));
-                  },
-                ),
-                ListTile(
-                  contentPadding: EdgeInsets.only(left: cWidth * 0.1),
-                  leading: Icon(
-                    Icons.group,
-                    color: Color(0xFF398AE5),
-                  ),
-                  title: Text("Exams"),
-                  onTap: () {
-                    Navigator.pop(context);
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => ExamsList()));
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => StudentsList()));
                   },
                 ),
                 ListTile(
