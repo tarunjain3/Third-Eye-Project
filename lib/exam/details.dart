@@ -1,12 +1,9 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-
+import 'package:thirdeye/api/postImage.dart';
 
 class ExamDetails extends StatefulWidget {
-  final File imageUrl;
-
-  const ExamDetails({Key key, this.imageUrl}) : super(key: key);
   @override
   _ExamDetailsState createState() => _ExamDetailsState();
 }
@@ -22,35 +19,9 @@ class _ExamDetailsState extends State<ExamDetails> {
   final _formKey = GlobalKey<FormState>();
   final _scaffoldKey = GlobalKey<ScaffoldState>();
   File _image;
+  bool loading = false;
   final scaffoldKey = GlobalKey<ScaffoldState>();
   var profileImage;
-  bool showErrorMessage = false;
-  Future<void> _showMyDialog(BuildContext context) async {
-  return showDialog<void>(
-    context: context,
-    barrierDismissible: false, // user must tap button!
-    builder: (BuildContext context) {
-      return AlertDialog(
-        title: Text('Verification Failed'),
-        content: SingleChildScrollView(
-          child: ListBody(
-            children: <Widget>[
-              Text('Please retry with correct details'),
-            ],
-          ),
-        ),
-        actions: <Widget>[
-          TextButton(
-            child: Text('Ok'),
-            onPressed: () {
-              Navigator.of(context).pop();
-            },
-          ),
-        ],
-      );
-    },
-  );
-}
   @override
   Widget build(BuildContext context) {
     double cHeight = MediaQuery.of(context).size.height;
@@ -62,20 +33,13 @@ class _ExamDetailsState extends State<ExamDetails> {
         _image = _image;
         print("_image: $_image");
       });
-      Navigator.push(
-          context,
-          MaterialPageRoute(
-              builder: (context) => ExamDetails(
-                    imageUrl: _image,
-                  )));
+      return _image;
     }
 
     return Scaffold(
       key: _scaffoldKey,
       appBar: AppBar(
-        title: GestureDetector(child: Text("Details") ,onTap: (){setState(() {
-          showErrorMessage = true;
-        });},),
+        title: Text("Details"),
       ),
       body: Container(
           child: Column(
@@ -97,14 +61,14 @@ class _ExamDetailsState extends State<ExamDetails> {
                             // mainAxisAlignment: MainAxisAlignment.center,
                             children: <Widget>[
                               Center(
-                                child: widget.imageUrl == null
+                                child: _image == null
                                     ? Icon(
                                         Icons.person,
                                         color: Theme.of(context).primaryColor,
                                         size: cHeight * 0.15,
                                       )
                                     : Image.file(
-                                        widget.imageUrl,
+                                        _image,
                                       ),
                               ),
                               Align(
@@ -115,7 +79,9 @@ class _ExamDetailsState extends State<ExamDetails> {
                                     ),
                                     child: //editProfile
                                         ElevatedButton(
-                                      onPressed: () => getImage(context),
+                                      onPressed: () async {
+                                        _image = await getImage(context);
+                                      },
                                       child: Text(
                                         "Add Photo",
                                       ),
@@ -264,20 +230,23 @@ class _ExamDetailsState extends State<ExamDetails> {
                         child: PhysicalModel(
                           color: Colors.blue,
                           child: MaterialButton(
-                            onPressed: () {
-                              // showErrorMessage
-                              _showMyDialog(context);
-                              // :Navigator.push(
-                              //     context,
-                              //     MaterialPageRoute(
-                              //         builder: (context) => ExamWebView()));
+                            onPressed: () async {
+                              setState(() {
+                                loading = true;
+                              });
+                                await postImage(context, _image, "");
+                              setState(() {
+                                loading = false;
+                              });
                             },
-                            child: Text(
-                              "Start Exam",
-                              style: TextStyle(
-                                color: Colors.white,
-                              ),
-                            ),
+                            child: loading
+                                ? CircularProgressIndicator(valueColor: AlwaysStoppedAnimation<Color>(Colors.red))
+                                : Text(
+                                    "Start Exam",
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                    ),
+                                  ),
                           ),
                         ),
                       ),
