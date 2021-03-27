@@ -24,6 +24,7 @@ dependencies:
   flutter:
     sdk: flutter
   image_picker: ^0.6.2+3
+  shared_preferences:
   webview_flutter:
   
 

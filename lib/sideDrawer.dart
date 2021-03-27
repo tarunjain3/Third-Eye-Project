@@ -5,6 +5,9 @@ import 'package:thirdeye/studentsList.dart';
 import 'package:thirdeye/timeTable.dart';
 
 class SideDrawer extends StatefulWidget {
+  final String name;
+
+  const SideDrawer({Key key, this.name}) : super(key: key);
   @override
   _SideDrawerState createState() => _SideDrawerState();
 }
@@ -66,7 +69,7 @@ class _SideDrawerState extends State<SideDrawer> {
                               Column(
                                 children: <Widget>[
                                   Text(
-                                    "User Name",
+                                    "${widget.name}",
                                     style: TextStyle(
                                       fontSize: 25,
                                       fontWeight: FontWeight.bold,

@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:thirdeye/exam/details.dart';
 import 'package:thirdeye/sideDrawer.dart';
 
@@ -14,6 +15,7 @@ class ExamsList extends StatefulWidget {
 }
 
 class _ExamsListState extends State<ExamsList> {
+  String name = "User Name";
   List<String> subjects = ["Science", "Hindi", "Maths", "Englist", "Computer"];
   List<String> timings = [
     "10:00-11:00 am",
@@ -22,10 +24,23 @@ class _ExamsListState extends State<ExamsList> {
     "01:00-02:00 9m",
     "02:00-03:00 pm"
   ];
+  getName(BuildContext context)async{
+     SharedPreferences pref = await SharedPreferences.getInstance();
+        name =   pref.getString("name");
+        setState(() {
+          name = name;
+        });
+        return name;
+  }
+  @override
+  void initState() {
+    getName(context);
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-       drawer: SideDrawer(),
+       drawer: SideDrawer(name:name),
       appBar: AppBar(
        
         title: Center(child: Text("Exams")),

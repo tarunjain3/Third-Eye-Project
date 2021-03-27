@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:thirdeye/exam/exams.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
 class LoginScreen extends StatefulWidget {
   @override
   _LoginScreenState createState() => _LoginScreenState();
@@ -109,8 +111,10 @@ class _LoginScreenState extends State<LoginScreen> {
       width: double.infinity,
       child: RaisedButton(
         elevation: 5.0,
-        onPressed: () {
+        onPressed: () async{
           print('Login Button Pressed');
+          SharedPreferences pref = await SharedPreferences.getInstance();
+          pref.setString("name", userName.text);
           Navigator.push(context, MaterialPageRoute(builder: (context) => ExamsList()));
         },
         padding: EdgeInsets.all(15.0),
