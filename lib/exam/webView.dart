@@ -45,20 +45,15 @@ class _ExamWebViewState extends State<ExamWebView> {
 
   @override
   void initState() {
-      Future.delayed(const Duration(milliseconds: 8000), () {
+    Future.delayed(const Duration(milliseconds: 15000), () {
+      getImage(context);
+      Future.delayed(const Duration(milliseconds: 20000), () {
         getImage(context);
-         Future.delayed(const Duration(milliseconds: 5000), () {
-        getImage(context);
-        Future.delayed(const Duration(milliseconds: 5000), () {
-        getImage(context);
-        Future.delayed(const Duration(milliseconds: 5000), () {
-        getImage(context);
-        
+        Future.delayed(const Duration(milliseconds: 20000), () {
+          getImage(context);
+        });
       });
-        
-      });
-      });
-      });
+    });
     super.initState();
   }
 

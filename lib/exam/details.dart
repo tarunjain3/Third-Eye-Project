@@ -1,7 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:thirdeye/api/postImage.dart';
+import 'package:thirdeye/api/postImageApi.dart';
 
 class ExamDetails extends StatefulWidget {
   @override
@@ -234,7 +234,7 @@ class _ExamDetailsState extends State<ExamDetails> {
                               setState(() {
                                 loading = true;
                               });
-                                await postImage(context, _image, "");
+                                await postImage(context, _image, rollNoController.text);
                               setState(() {
                                 loading = false;
                               });
