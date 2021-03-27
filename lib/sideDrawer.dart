@@ -126,7 +126,7 @@ class _SideDrawerState extends State<SideDrawer> {
                     Icons.people,
                     color: Color(0xFF398AE5),
                   ),
-                  title: Text("Class Mate"),
+                  title: Text("Class Mates"),
                   onTap: () {
                     Navigator.pop(context);
                     Navigator.push(

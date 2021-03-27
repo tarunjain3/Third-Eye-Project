@@ -199,7 +199,7 @@ class _ExamDetailsState extends State<ExamDetails> {
                                     labelText: "School/College*",
                                     border: UnderlineInputBorder(),
                                   ),
-                                  keyboardType: TextInputType.number,
+                                  keyboardType: TextInputType.text,
                                 ),
                               ),
                             ),
