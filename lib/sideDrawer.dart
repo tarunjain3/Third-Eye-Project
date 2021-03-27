@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:thirdeye/exam/exams.dart';
 import 'package:thirdeye/loginScreen.dart';
 import 'package:thirdeye/studentsList.dart';
 import 'package:thirdeye/timeTable.dart';
@@ -112,17 +111,17 @@ class _SideDrawerState extends State<SideDrawer> {
                     Navigator.pop(context);
                   },
                 ),
-                ListTile(
-                  contentPadding: EdgeInsets.only(left: cWidth * 0.1),
-                  leading: Icon(
-                    Icons.format_list_bulleted,
-                    color: Color(0xFF398AE5),
-                  ),
-                  title: Text("Attendence"),
-                  onTap: () {
-                    Navigator.pop(context);
-                  },
-                ),
+                // ListTile(
+                //   contentPadding: EdgeInsets.only(left: cWidth * 0.1),
+                //   leading: Icon(
+                //     Icons.format_list_bulleted,
+                //     color: Color(0xFF398AE5),
+                //   ),
+                //   title: Text("Attendence"),
+                //   onTap: () {
+                //     Navigator.pop(context);
+                //   },
+                // ),
                 ListTile(
                   contentPadding: EdgeInsets.only(left: cWidth * 0.1),
                   leading: Icon(
