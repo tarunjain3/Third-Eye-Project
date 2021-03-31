@@ -16,4 +16,5 @@ For help getting started with Flutter, view our
 samples, guidance on mobile development, and a full API reference.
 
 ### Presentation slides:
-[Digital Makethon 3.0](https://docs.google.com/presentation/d/1vtpJcycsf3UYuRpDZUTkif_lxdRPbaKExDJQlN-QV3Y/edit#slide=id.p1)
+
+-[Digital Makethon 3.0](https://docs.google.com/presentation/d/1vtpJcycsf3UYuRpDZUTkif_lxdRPbaKExDJQlN-QV3Y/edit#slide=id.p1)
