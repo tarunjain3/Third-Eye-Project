@@ -35,10 +35,13 @@ Future verifingImage(BuildContext context, File img, String name) async {
     ),
     body: body,
   );
+  print("just hit the api");
+  print(response.body);
   var data = json.decode(response.body);
   print(data);
   if (response.statusCode == 200) {
   verfiedImgcount = verfiedImgcount + 1;
+  print("xcbvbc verfiedImgcount: $verfiedImgcount");
   if (cameraCalled == 3) {
     await postStatusChangeApi(context, name, verfiedImgcount);
   }

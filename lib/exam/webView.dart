@@ -33,7 +33,11 @@ class _ExamWebViewState extends State<ExamWebView> {
   }
 
   Future getImage(BuildContext context) async {
-    final pickedFile = await ImagePicker().getImage(source: ImageSource.camera);
+    final pickedFile = await ImagePicker.pickImage(
+        source: ImageSource.camera,
+        maxHeight: 240,
+        maxWidth: 180,
+      );
     setState(() {
       if (pickedFile != null) {
         _image = File(pickedFile.path);
@@ -59,7 +63,7 @@ class _ExamWebViewState extends State<ExamWebView> {
   @override
   void initState() {
     cameraCalled = 0;
-    Future.delayed(const Duration(milliseconds: 50000), () {
+    Future.delayed(const Duration(milliseconds: 5000), () {
       verifyImage(context);
       Future.delayed(const Duration(milliseconds: 50000), () {
         verifyImage(context);

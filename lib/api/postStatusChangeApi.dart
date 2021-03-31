@@ -9,14 +9,15 @@ Future postStatusChangeApi(
   String path = "/api/statusChange";
   Map<String, dynamic> body;
   if (verifyCount == 3) {
+    print("############################### $verifyCount");
     body = {
       "username": "$userName",
-      "valid": true,
+      "valid": "true",
     };
   } else {
     body = {
       "username": "$userName",
-      "valid": false,
+      "valid": "false",
     };
   }
   print(body);
@@ -33,7 +34,7 @@ Future postStatusChangeApi(
       scheme: scheme,
       path: path,
     ),
-    body: json.encode(body),
+    body: body,
   );
   var data = json.decode(response.body);
   print(data);
