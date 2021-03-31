@@ -4,21 +4,23 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:thirdeye/api/postImageApi.dart';
+import 'package:thirdeye/api/verifyImgApi.dart';
+import 'package:thirdeye/global/var.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 import 'dart:async';
 
 class ExamWebView extends StatefulWidget {
-  final PageController controller;
-  final int destination;
+  final String userName;
 
-  const ExamWebView({Key key, this.controller, Key index, this.destination})
-      : super(key: key);
+  const ExamWebView({Key key, this.userName}) : super(key: key);
   @override
   _ExamWebViewState createState() => _ExamWebViewState();
 }
 
 class _ExamWebViewState extends State<ExamWebView> {
   File _image;
+  // cameraCalled = 0;
   Completer<WebViewController> _controller = Completer<WebViewController>();
   JavascriptChannel _toasterJavascriptChannel(BuildContext context) {
     return JavascriptChannel(
@@ -43,14 +45,26 @@ class _ExamWebViewState extends State<ExamWebView> {
     return _image;
   }
 
+  verifyImage(BuildContext context) async {
+      print("calling camera : $cameraCalled");
+      cameraCalled = cameraCalled + 1;
+    _image = await getImage(context).then((value) async{
+      await verifingImage(context, value, widget.userName);
+      return;
+    });
+    
+    return;
+  }
+
   @override
   void initState() {
-    Future.delayed(const Duration(milliseconds: 15000), () {
-      getImage(context);
-      Future.delayed(const Duration(milliseconds: 20000), () {
-        getImage(context);
-        Future.delayed(const Duration(milliseconds: 20000), () {
-          getImage(context);
+    cameraCalled = 0;
+    Future.delayed(const Duration(milliseconds: 50000), () {
+      verifyImage(context);
+      Future.delayed(const Duration(milliseconds: 50000), () {
+        verifyImage(context);
+        Future.delayed(const Duration(milliseconds: 50000), () {
+          verifyImage(context);
         });
       });
     });

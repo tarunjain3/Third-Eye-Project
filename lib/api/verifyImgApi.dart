@@ -2,16 +2,15 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:thirdeye/api/postStatusChangeApi.dart';
 import 'dart:async';
-import 'package:thirdeye/exam/webView.dart';
-import 'package:thirdeye/global/alert.dart';
 import 'package:thirdeye/global/var.dart';
 
-Future postImage(BuildContext context, File img, String name) async {
+Future verifingImage(BuildContext context, File img, String name) async {
   String path = "/api/img";
   final imageBytes = img.readAsBytesSync();
   String base64Image = base64Encode(imageBytes);
-  print("################ $base64Image");
+  print("################ $img");
   Map<String, String> body = {
     "username": "$name",
     "img": "data:image/jpeg;base64,$base64Image"
@@ -39,13 +38,11 @@ Future postImage(BuildContext context, File img, String name) async {
   var data = json.decode(response.body);
   print(data);
   if (response.statusCode == 200) {
-    return Navigator.push(
-        context,
-        MaterialPageRoute(
-            builder: (context) => ExamWebView(
-                  userName: name,
-                )));
-  } else {
-    return showMyDialog(context, "verfication failed", data["detection"]);
+  verfiedImgcount = verfiedImgcount + 1;
+  if (cameraCalled == 3) {
+    await postStatusChangeApi(context, name, verfiedImgcount);
   }
+  return;
+  }
+  return ;
 }

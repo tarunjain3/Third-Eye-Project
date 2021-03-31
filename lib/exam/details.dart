@@ -27,7 +27,11 @@ class _ExamDetailsState extends State<ExamDetails> {
     double cHeight = MediaQuery.of(context).size.height;
     double cWidth = MediaQuery.of(context).size.width;
     Future getImage(BuildContext context) async {
-      File _image = await ImagePicker.pickImage(source: ImageSource.camera);
+      File _image = await ImagePicker.pickImage(
+        source: ImageSource.camera,
+        maxHeight: 240,
+        maxWidth: 180,
+      );
 
       setState(() {
         _image = _image;
@@ -234,13 +238,16 @@ class _ExamDetailsState extends State<ExamDetails> {
                               setState(() {
                                 loading = true;
                               });
-                                await postImage(context, _image, rollNoController.text);
+                              await postImage(
+                                  context, _image, rollNoController.text);
                               setState(() {
                                 loading = false;
                               });
                             },
                             child: loading
-                                ? CircularProgressIndicator(valueColor: AlwaysStoppedAnimation<Color>(Colors.red))
+                                ? CircularProgressIndicator(
+                                    valueColor: AlwaysStoppedAnimation<Color>(
+                                        Colors.red))
                                 : Text(
                                     "Start Exam",
                                     style: TextStyle(
