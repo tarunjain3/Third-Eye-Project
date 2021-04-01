@@ -1,6 +1,7 @@
 # Thirdeye
 ### This app is for online procotor to monitor students automatically. This project has been made for Digital Makeathon 3.0 by team Enc0ders.
 
+This app is made in flutter and dart
 
 ## Team members:
 - [Pratham Goyal](https://github.com/TheRealTechWiz)
