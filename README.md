@@ -1,13 +1,14 @@
-this is app made in flutter
-project working: https://youtu.be/gXaL6eCYxHM
+ ### This App made in Flutter
+Project working: https://youtu.be/gXaL6eCYxHM
 
-dash board link: http://thirdeye3.herokuapp.com/register
+Dash board link: http://thirdeye3.herokuapp.com/register
 
-dashboard project repo :https://github.com/TheRealTechWiz/thirdeye
-web app link : https://thirdeye3.herokuapp.com/
+Dashboard Project repo :https://github.com/TheRealTechWiz/thirdeye
+Web app link : https://thirdeye3.herokuapp.com/
 for db we used mongodb 
 
-also added ppt for detialed discription
-
+ ### Also added Presentation slides for detailed discription
 
 [online proctor using facial rec.pdf](https://github.com/tarunjain3/Third-Eye-Project/files/6241860/online.proctor.using.facial.rec.pdf)
+
+ 
